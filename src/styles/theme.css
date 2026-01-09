@@ -1,0 +1,303 @@
+:root{
+  --bg: #efe9e2;
+  --bg2: #f4efe9;
+  --card: rgba(255,255,255,0.72);
+  --shadow: 0 18px 50px rgba(0,0,0,0.12);
+  --green: #5f7f6f;
+  --green2: #9fb8aa;
+  --text: #1f2a2a;
+  --muted: rgba(0,0,0,0.55);
+  --radius: 18px;
+}
+
+*{ box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 70% 65%, rgba(0,0,0,0.07), transparent 60%),
+    linear-gradient(180deg, var(--bg2), var(--bg));
+}
+
+.page{ min-height: 100vh; }
+.container{ width: min(1200px, 92vw); margin: 0 auto; padding: 28px 0 70px; }
+
+.page-title{
+  margin: 24px 0 18px;
+  font-size: 44px;
+  letter-spacing: -0.02em;
+}
+
+/* ---------------- TOPBAR ---------------- */
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 20px;
+  padding: 6px 0 0;
+}
+
+.brand{ display:flex; align-items:center; gap: 14px; }
+
+.brand-icon{
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display:block;
+}
+
+.brand-title{
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  font-size: 20px;
+}
+.brand-subtitle{
+  margin-top: 2px;
+  font-size: 14px;
+  color: rgba(0,0,0,0.65);
+}
+
+.actions-row{ display:flex; gap: 10px; align-items:center; flex-wrap: wrap; }
+
+/* ---------------- BUTTONS ---------------- */
+.btn{
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.55);
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor:pointer;
+  font-weight: 700;
+}
+.btn:hover{ filter: brightness(0.98); }
+
+.btn-primary{
+  background: var(--green);
+  color: #fff;
+  border-color: rgba(0,0,0,0.12);
+}
+
+.btn-secondary{
+  background: rgba(255,255,255,0.55);
+}
+
+.btn-danger{
+  background: rgba(217, 28, 28, 0.10);
+  border-color: rgba(217, 28, 28, 0.25);
+  color: #b20f0f;
+}
+
+.btn-block{ width: 100%; }
+
+.link{
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 800;
+  margin-left: 14px;
+  color: #0b0f10;
+}
+.link.danger{ color: #d91c1c; }
+
+/* ---------------- CARDS / TEXT ---------------- */
+.card{
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.small{ font-size: 12px; }
+.muted{ color: var(--muted); }
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.10);
+  font-weight: 900;
+}
+
+/* ---------------- FORMS ---------------- */
+.label{
+  display:block;
+  margin: 12px 0 6px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.input, select, textarea{
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255,255,255,0.68);
+  padding: 12px 14px;
+  border-radius: 12px;
+  outline: none;
+}
+
+.input:focus, select:focus, textarea:focus{
+  border-color: rgba(95,127,111,0.8);
+  box-shadow: 0 0 0 4px rgba(95,127,111,0.15);
+}
+
+/* ---------------- RESPONSIVE GRID HELPERS ---------------- */
+/* Use: <div className="grid grid-5"> ... </div> (vira 1 coluna no mobile) */
+.grid{ display: grid; gap: 12px; }
+.grid-2{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-5{ grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+@media (max-width: 980px){
+  .grid-5{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid-4{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px){
+  .page-title{ font-size: 34px; }
+  .brand-icon{ width: 92px; height: 92px; }
+  .grid-5, .grid-4, .grid-3, .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* ---------------- TABLE (DIV GRID) ---------------- */
+.table-card{
+  background: rgba(159,184,170,0.72);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* wrapper pra mobile overflow */
+.table-scroll{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* grid base */
+.table-head, .table-row{
+  display:grid;
+  gap: 14px;
+  padding: 18px 20px;
+  align-items:center;
+  min-width: 820px; /* garante overflow no mobile sem quebrar */
+}
+
+.table-head{
+  font-weight: 900;
+  color: rgba(0,0,0,0.8);
+  background: rgba(159,184,170,0.55);
+}
+
+.table-row{
+  background: rgba(159,184,170,0.28);
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+/* alinhamentos */
+.ta-right{ text-align:right; }
+.tc{ text-align:center; } /* ✅ centralização da coluna Status */
+.cell-center{ display:flex; justify-content:center; } /* ✅ pill centralizada */
+
+/* ---------------- TABLE (HTML table) fallback ---------------- */
+.table-wrap{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px; /* ✅ mesma ideia: no mobile vira scroll horizontal */
+}
+
+.table th, .table td{
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  vertical-align: middle;
+}
+
+.table th{ text-align: left; }
+
+/* ---------------- LOGIN ---------------- */
+.login-page{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 30px 0;
+}
+
+.login-grid{
+  width: min(1200px, 92vw);
+  display:grid;
+  grid-template-columns: 1fr 520px;
+  align-items:center;
+  gap: 80px;
+}
+
+.login-left{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.login-logo{
+  width: min(520px, 60vw);
+  height: auto;
+  display:block;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.10));
+}
+
+.card-login{ padding: 18px; }
+
+.login-titlebar{
+  background: rgba(159,184,170,0.62);
+  padding: 14px 16px;
+  border-radius: 12px;
+  text-align:center;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.form{ padding: 14px 6px 2px; }
+
+@media (max-width: 980px){
+  .login-grid{ grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* Relatório */
+.print-hide { display: inline-flex; gap: 10px; }
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .topbar, .print-hide {
+    display: none !important;
+  }
+
+  .container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .card, .table-card {
+    box-shadow: none !important;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .table {
+    min-width: 0 !important;
+  }
+
+  .table-wrap {
+    overflow: visible !important;
+  }
+}
