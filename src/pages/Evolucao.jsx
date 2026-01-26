@@ -26,6 +26,9 @@ const labels = {
   perna_esquerda: "Perna esquerda",
 };
 
+// const firstSessao = useMemo(() => sessoes [0] || null, [sessoes]);
+// const lastSessao = useMemo (()=> (sessoes.length ? sessoes [sessoes.length - 1] : null), [sessoes])
+
 function fmtDate(iso) {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "-";
